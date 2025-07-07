@@ -1,16 +1,17 @@
+import { logger } from "./logger.mjs";
 import { refs } from "./main.mjs";
 
 async function getTranslator(languages) {
 
   if (!('Translator' in window)) {
-    console.error("update your chrome to version 138\n...or you can try enable the feature flag: chrome://flags/#translation-api")
+    logger.error("update your chrome to version 138\n...or you can try enable the feature flag: chrome://flags/#translation-api")
     return ;
   }
 
   const availability = await Translator.availability(languages);
 
   if (availability === "unavailable") {
-    console.log(
+    logger.info(
       `Translation not supported; try a different language combination.`
     );
     return ;
@@ -21,7 +22,7 @@ async function getTranslator(languages) {
     ...languages,
     monitor(monitor) {
       monitor.addEventListener("downloadprogress", (e) => {
-        console.log(`Downloaded ${Math.floor(e.loaded * 100)}%`);
+        logger.info(`Downloaded ${Math.floor(e.loaded * 100)}%`);
       });
     },
   });
@@ -47,7 +48,7 @@ export async function translatorService(text) {
   const instance = await initializeTranslator();
 
   const translation = await instance.translate(text);
-  console.log(translation);
+  logger.info(translation);
 
   return translation;
 }

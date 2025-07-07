@@ -1,8 +1,10 @@
 import { refs } from "./main.mjs";
 
+import { logger } from './logger.mjs';
+
 export function speak(text, lang) {
     if (!('SpeechSynthesisUtterance' in window)) {
-      console.error("speech synthesis is not supported")
+      logger.error("speech synthesis is not supported")
       return ;
     }
   

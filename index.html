@@ -17,20 +17,25 @@
       <h3>Web Translator API test</h3>
     </header>
 
-    <main>
-      <div>
-        Source language:
-        <select id="source-language" name="sourceLanguage"></select>
-      </div>
-      <div>
-        Target language:
-        <select id="target-language" name="targetLanguage"></select>
-      </div>
+    <div class="container">
+      <main>
+        <div>
+          <span class="label">Source language:</span>
+          <select id="source-language" name="sourceLanguage"></select>
+        </div>
+        <div>
+          <span class="label">Target language:</span>
+          <select id="target-language" name="targetLanguage"></select>
+        </div>
 
-      <button id="live-translate">Live translate</button>
-      <button id="stop">Stop</button>
-      <p>check console for results and logs</p>
-    </main>
+        <button id="live-translate">Live translate</button>
+        <button id="stop">Stop</button>
+        
+      </main>
+      <aside>
+        <div id="logs"></div>
+      </aside>
+    </div>
 
     <script type="module" src="./js/main.mjs" defer></script>
   </body>

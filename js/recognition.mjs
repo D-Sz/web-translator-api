@@ -1,10 +1,11 @@
 import { refs } from "./main.mjs";
+import { logger } from './logger.mjs';
 
 export const recognize = (onResult) => {
   refs.onRecognitionResult = onResult;
 
   if (!('webkitSpeechRecognition' in window)) {
-    console.error("speech recognition is not supported")
+    logger.error("speech recognition is not supported")
     return ;
   }
 
@@ -17,32 +18,32 @@ export const recognize = (onResult) => {
   recognition.onresult = (event) => {
     const lastResult = event.results[event.results.length - 1];
     const text = lastResult[0].transcript;
-    console.log('recognized: ',text);
+    logger.info('recognized: ', text);
     refs.onRecognitionResult?.(text);
   };
   recognition.onend = () => {
-    console.log("Recognition stopped");
+    logger.info("Recognition stopped");
   };
   recognition.onerror = (event) => {
-    console.error("Recognition error:", event.error);
+    logger.error("Recognition error:", event.error);
   };
   recognition.onspeechstart = () => {
-    console.log("Speech started");
+    logger.info("Speech started");
   };
   recognition.onspeechend = () => {
-    console.log("Speech ended");
+    logger.info("Speech ended");
   };
   recognition.onaudioend = () => {
-    console.log("Audio ended");
+    logger.info("Audio ended");
   };
   recognition.onaudiostart = () => {
-    console.log("Audio started");
+    logger.info("Audio started");
   };
   recognition.onsoundstart = () => {
-    console.log("Sound started");
+    logger.info("Sound started");
   };
   recognition.onsoundend = () => {
-    console.log("Sound ended");
+    logger.info("Sound ended");
   };
 
   recognition.start();

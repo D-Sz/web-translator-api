@@ -1,4 +1,5 @@
 
+import { logger } from "./logger.mjs";
 import { recognize } from "./recognition.mjs";
 import { initializeTranslator } from "./translate.mjs";
 import { speak } from "./tts.mjs";
@@ -24,15 +25,16 @@ const liveTranslate = async () => {
   }
   recognize(async (text)=>{
     const { translator } = refs;
-
+  
     const translatedText = await translator.translate(text);
+    logger.info(translatedText);
     speak(translatedText, refs.targetLanguage);
   })
   
 };
 
 const startup = async () => {
-  console.log("app has started");
+  logger.info("app has started");
   document.getElementById("stop").addEventListener("click", stop);
   document.getElementById("live-translate").addEventListener("click", liveTranslate);
 
