@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Web Translator Application" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Web Translator</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <header>
+      <h3>Web Translator API test</h3>
+    </header>
+
+    <main>
+      <div>
+        Source language:
+        <select id="source-language" name="sourceLanguage"></select>
+      </div>
+      <div>
+        Target language:
+        <select id="target-language" name="targetLanguage"></select>
+      </div>
+
+      <button id="live-translate">Live translate</button>
+      <button id="stop">Stop</button>
+      <p>check console for results and logs</p>
+    </main>
+
+    <script type="module" src="./js/main.mjs" defer></script>
+  </body>
+</html>
